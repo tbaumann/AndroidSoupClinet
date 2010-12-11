@@ -41,6 +41,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dip"
         android:text="@string/post_button"
-        android:layout_below="@id/post_text_tags"/>
+        android:layout_below="@id/post_text_tags"
+        android:onClick="post"
+        />
 
 </RelativeLayout>

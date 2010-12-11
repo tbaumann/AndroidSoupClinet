@@ -18,6 +18,7 @@ public class CookieReader extends HashMap{
 			while(i.hasNext()){
 				String current = i.next();
 				String[] value = current.split("=");
+				value[0] = value[0].replaceAll("\\s", "");
 				this.put(value[0], value[1]);
 			}
 		}

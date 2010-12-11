@@ -16,6 +16,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Login extends Activity {
 	private WebView mWebView;
@@ -55,7 +58,7 @@ public class Login extends Activity {
         mWebView.setWebViewClient(new HelloWebViewClient());
         
         mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.loadUrl("http://soup.io/login"); 
+        mWebView.loadUrl("http://www.soup.io/login"); 
     }
 
 
@@ -73,11 +76,19 @@ public class Login extends Activity {
 
     public void doneButtonPressed(View view){
     	String url = mWebView.getUrl();
+    	String basedomain = null;
     	
     	CookieReader soupCookie =  (CookieReader) new CookieReader();
        	soupCookie.parseText(CookieManager.getInstance().getCookie(url));
        	String session_id = (String) soupCookie.get("soup_session_id");
-       	if(session_id == null ){
+       	
+       	Pattern pat = Pattern.compile("http://([^/]*)/.*");
+   		Matcher mat = pat.matcher(url);
+   		if (mat.find()){
+   			basedomain = mat.group(1);
+    	}
+   		
+       	if(session_id == null || basedomain == null){
        		Toast.makeText(getApplicationContext(), R.string.no_session_id_found, Toast.LENGTH_SHORT).show();
        		setResult(RESULT_CANCELED);
        	}else{
@@ -85,6 +96,7 @@ public class Login extends Activity {
        		SharedPreferences.Editor editor = settings.edit();
        		editor.putString("soup_session_id", session_id);
        		editor.putString("soup_url", url);
+       		editor.putString("soup_basedomain", basedomain);
        		editor.commit();
        		setResult(RESULT_OK);
        		Toast.makeText(getApplicationContext(), "Found session ID: " + session_id, Toast.LENGTH_SHORT).show();
