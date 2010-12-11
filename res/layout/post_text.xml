@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/post_text_subject_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/post_title"/>
+    <EditText
+        android:id="@+id/post_text_subject"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:layout_toRightOf="@id/post_text_subject_label"/>
+    <EditText
+        android:id="@+id/post_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:layout_below="@id/post_text_subject"
+        android:minLines="5"
+        android:singleLine="false"/>
+	<TextView
+        android:id="@+id/post_text_tags_label"
+        android:layout_height="wrap_content"
+        android:text="@string/post_tags"
+        android:layout_below="@id/post_text"
+    android:layout_width="wrap_content"/>
+	<EditText
+        android:id="@+id/post_text_tags"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/editbox_background"
+        android:layout_toRightOf="@id/post_text_tags_label"
+        android:layout_below="@id/post_text"/>
+    <Button
+        android:id="@+id/post_text_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dip"
+        android:text="@string/post_button"
+        android:layout_below="@id/post_text_tags"/>
+
+</RelativeLayout>

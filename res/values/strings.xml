@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="not_logged_in">Login first to post anything.</string>
+    <string name="logged_in">You seem to be logged in</string>
+    <string name="app_name">SoupClient</string>
+	<string name="login">Login</string>
+    <string name="session_id">Session-ID</string>
+	<string name="login_done">Done</string>
+	<string name="press_done">Login to your Soup and press Done.</string>
+	<string name="no_session_id_found">Could not find Soup.io session cookie at current site. Not saving.</string>
+	<string name="new_post_button">New Post</string>
+<string name="post_title">Title:</string>
+<string name="post_tags">Tags:</string>
+<string name="post_button">Post</string>
+</resources>
